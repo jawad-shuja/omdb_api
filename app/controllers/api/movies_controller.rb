@@ -4,6 +4,11 @@ class Api::MoviesController < Api::BaseController
 
   before_action :set_movie, only: %w[show]
 
+  def index
+    movies = Movie.all
+    render_collection(movies, MovieBlueprint)
+  end
+
   def show
     render_response(@movie, MovieBlueprint)
   end

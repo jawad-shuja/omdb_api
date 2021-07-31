@@ -5,7 +5,7 @@ require 'rails_helper'
 describe Api::MoviesController, type: :request do
 
   let (:user) { create_user }
-  let (:movie) { create_movie }
+  let! (:movie) { create_movie }
 
   context 'When fetching a movie' do
     before do
@@ -27,7 +27,7 @@ describe Api::MoviesController, type: :request do
   context 'When a movie is missing' do
     before do
       login_with_api(user)
-      get "/api/movies/blank", headers: {
+      get '/api/movies/blank', headers: {
         'Authorization': response.headers['Authorization']
       }
     end
@@ -44,6 +44,24 @@ describe Api::MoviesController, type: :request do
 
     it 'returns 401' do
       expect(response.status).to eq(401)
+    end
+  end
+
+  context 'When fetching movies' do
+    before do
+      login_with_api(user)
+      get '/api/movies', headers: {
+        'Authorization': response.headers['Authorization']
+      }
+    end
+
+    it 'returns 200' do
+      expect(response.status).to eq(200)
+    end
+
+    it 'returns one of the movie' do
+      expect(json).to be_an_instance_of(Array)
+      expect(json).to include({ 'id' => movie.id, 'omdb_reference' => movie.omdb_reference })
     end
   end
 

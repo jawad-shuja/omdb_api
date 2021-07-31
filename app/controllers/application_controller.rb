@@ -2,6 +2,10 @@
 
 class ApplicationController < ActionController::API
 
+  def render_collection(collection, blueprint)
+    render json: blueprint.render_as_json(collection)
+  end
+
   def render_response(resource, blueprint)
     if resource.errors.empty?
       render json: blueprint.render_as_json(resource)
