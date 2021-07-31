@@ -43,3 +43,7 @@ gem 'devise'
 gem 'devise-jwt', '~> 0.8.1'
 gem 'rack-cors'
 gem 'blueprinter'
+
+group :test do
+  gem 'rspec-rails'
+end
