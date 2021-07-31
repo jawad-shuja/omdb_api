@@ -4,7 +4,7 @@ class ApplicationController < ActionController::API
 
   def render_response(resource, blueprint)
     if resource.errors.empty?
-      render blueprint.render(resource)
+      render json: blueprint.render_as_json(resource)
     else
       render json: {
         status: "failed",

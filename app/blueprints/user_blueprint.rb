@@ -1,5 +1,5 @@
 class UserBlueprint < Blueprinter::Base
-  identifier :uuid
+  identifier :id
 
   fields :email
 end
