@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # spec/support/api_helpers.rb
 
 module ApiHelpers

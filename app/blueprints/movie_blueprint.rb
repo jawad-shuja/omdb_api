@@ -1,3 +1,7 @@
+# frozen_string_literal: true
+
+# app/blueprints/movie_blueprint.rb
+
 class MovieBlueprint < Blueprinter::Base
   identifier :id
 

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # spec/support/movie_helpers.rb
 
 require 'factory_bot_rails'

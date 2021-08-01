@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # spec/support/user_helpers.rb
 
 require 'faker'

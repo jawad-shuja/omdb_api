@@ -1,4 +1,6 @@
-class OMDBService
+# frozen_string_literal: true
+
+class OmdbService
   include HTTParty
   base_uri 'www.omdbapi.com'
 

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class MoviePolicy
   attr_reader :user, :movie
 

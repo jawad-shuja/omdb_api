@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
   resources :apidocs, only: [:index]
   namespace :api, defaults: { format: :json } do

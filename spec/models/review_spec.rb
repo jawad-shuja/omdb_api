@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # spec/models/review_spec.rb
 
 require 'rails_helper'
