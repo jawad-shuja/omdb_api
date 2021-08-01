@@ -18,7 +18,7 @@ class Api::V1::ReviewsController < Api::V1::BaseController
   end
 
   swagger_path '/movies/{movie_id}/reviews' do
-    operation :patch do
+    operation :post do
       key :description, 'Create review for movie with movie_id'
       key :produces, [
         'application/json'
