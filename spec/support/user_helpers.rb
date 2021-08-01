@@ -4,7 +4,6 @@ require 'faker'
 require 'factory_bot_rails'
 
 module UserHelpers
-
   def create_user
     FactoryBot.create(
       :user,
@@ -26,7 +25,7 @@ module UserHelpers
       :user,
       email: Faker::Internet.email,
       password: Faker::Internet.password,
-      role: User::roles[:admin]
+      role: User.roles[:admin]
     )
   end
 
@@ -35,8 +34,7 @@ module UserHelpers
       :user,
       email: Faker::Internet.email,
       password: Faker::Internet.password,
-      role: User::roles[:admin]
+      role: User.roles[:admin]
     )
   end
-
 end

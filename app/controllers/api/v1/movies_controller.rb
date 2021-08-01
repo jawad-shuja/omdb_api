@@ -1,14 +1,13 @@
 # app/controllers/api/v1/movies_controller.rb
 
 class Api::V1::MoviesController < Api::V1::BaseController
-
   include Swagger::Blocks
 
   before_action :set_movie, only: %w[show update show_times]
 
   def index
     movies = Movie.includes(:movie_datum)
-    movies_with_data = movies.map {|movie| movie.fetch_details_from_omdb }
+    movies_with_data = movies.map { |movie| movie.fetch_details_from_omdb }
     render_collection(movies_with_data, MovieBlueprint)
   end
 
@@ -19,11 +18,11 @@ class Api::V1::MoviesController < Api::V1::BaseController
 
   def update
     authorize @movie
-    unless @movie.update(movie_params)
-      raise ActiveRecord::RecordInvalid, @movie
-    else
+    if @movie.update(movie_params)
       movie_with_data = @movie.fetch_details_from_omdb
       render_response(movie_with_data, MovieBlueprint)
+    else
+      raise ActiveRecord::RecordInvalid, @movie
     end
   end
 
@@ -156,7 +155,7 @@ class Api::V1::MoviesController < Api::V1::BaseController
       key :summary, 'All movies'
       key :description, 'Returns all movies with details'
       key :produces, [
-        'application/json',
+        'application/json'
       ]
       key :tags, [
         'movie'
@@ -210,7 +209,6 @@ class Api::V1::MoviesController < Api::V1::BaseController
   end
 
   def movie_params
-    params.require(:movie).permit(:price, shows_attributes: [:id, :show_time, :_destroy])
+    params.require(:movie).permit(:price, shows_attributes: %i[id show_time _destroy])
   end
-
 end

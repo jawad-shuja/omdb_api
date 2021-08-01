@@ -31,7 +31,7 @@ class ApidocsController < ActionController::API
     Review,
     Show,
     ErrorModel,
-    self,
+    self
   ].freeze
 
   def index

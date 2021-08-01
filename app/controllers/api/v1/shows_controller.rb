@@ -1,7 +1,6 @@
 # app/controllers/api/v1/shows_controller.rb
 
 class Api::V1::ShowsController < Api::V1::BaseController
-
   include Swagger::Blocks
 
   before_action :set_movie, only: %w[index]
@@ -16,7 +15,7 @@ class Api::V1::ShowsController < Api::V1::BaseController
       key :summary, 'Upcoming movies shows'
       key :description, 'Returns all upcoming show times for movie with id movie_id'
       key :produces, [
-        'application/json',
+        'application/json'
       ]
       key :tags, [
         'show'
@@ -77,5 +76,4 @@ class Api::V1::ShowsController < Api::V1::BaseController
   def set_movie
     @movie = Movie.find(params[:movie_id])
   end
-
 end

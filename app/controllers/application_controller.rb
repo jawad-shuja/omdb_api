@@ -1,7 +1,6 @@
 # app/controllers/application_controller.rb
 
 class ApplicationController < ActionController::API
-
   include Pundit
 
   def render_collection(collection, blueprint)
@@ -13,10 +12,9 @@ class ApplicationController < ActionController::API
       render json: blueprint.render_as_json(resource)
     else
       render json: {
-        status: "failed",
+        status: 'failed',
         messages: resource.errors.full_messages
       }, status: 422
     end
   end
-
 end

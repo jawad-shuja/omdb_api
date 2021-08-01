@@ -4,7 +4,6 @@ require 'faker'
 require 'factory_bot_rails'
 
 module ShowHelpers
-
   def create_show_for_movie(movie)
     FactoryBot.create(
       :show,

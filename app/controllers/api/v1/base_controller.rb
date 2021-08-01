@@ -1,6 +1,5 @@
 # app/controllers/api/v1/base_controller.rb
 class Api::V1::BaseController < ApplicationController
-
   before_action :authenticate_user!
 
   rescue_from ActiveRecord::RecordNotFound, with: :not_found
@@ -35,5 +34,4 @@ class Api::V1::BaseController < ApplicationController
       ]
     }, status: 401
   end
-
 end

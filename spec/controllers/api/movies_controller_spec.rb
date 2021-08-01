@@ -3,10 +3,9 @@
 require 'rails_helper'
 
 describe Api::V1::MoviesController, type: :request do
-
-  let (:user) { create_user }
-  let (:admin) { create_admin }
-  let! (:movie) { create_movie }
+  let(:user) { create_user }
+  let(:admin) { create_admin }
+  let!(:movie) { create_movie }
 
   context 'When fetching a movie' do
     before do
@@ -21,7 +20,7 @@ describe Api::V1::MoviesController, type: :request do
     end
 
     it 'returns the movie' do
-      expect(json).to include("id" => movie.id)
+      expect(json).to include('id' => movie.id)
     end
   end
 
@@ -62,7 +61,7 @@ describe Api::V1::MoviesController, type: :request do
 
     it 'returns one of the movie' do
       expect(json).to be_an_instance_of(Array)
-      expect(json.any? { |movie| movie['title'] == "The Fast and the Furious" }).to be true
+      expect(json.any? { |movie| movie['title'] == 'The Fast and the Furious' }).to be true
     end
   end
 
@@ -75,7 +74,7 @@ describe Api::V1::MoviesController, type: :request do
         movie: {
           shows_attributes: [
             {
-              show_time: "01-08-2021 03:06:14 AM"
+              show_time: '01-08-2021 03:06:14 AM'
             }
           ]
         }
@@ -83,7 +82,7 @@ describe Api::V1::MoviesController, type: :request do
     end
 
     it 'returns 401' do
-      expect(response.status).to eq(401 )
+      expect(response.status).to eq(401)
     end
   end
 
@@ -96,7 +95,7 @@ describe Api::V1::MoviesController, type: :request do
         movie: {
           shows_attributes: [
             {
-              show_time: "01-08-2021 03:06:14 AM"
+              show_time: '01-08-2021 03:06:14 AM'
             }
           ]
         }
@@ -108,7 +107,7 @@ describe Api::V1::MoviesController, type: :request do
     end
 
     it 'return movie with show time' do
-      expect(json).to include("id" => movie.id)
+      expect(json).to include('id' => movie.id)
       expect(movie.shows.count).to be(1)
     end
   end
@@ -122,13 +121,13 @@ describe Api::V1::MoviesController, type: :request do
         movie: {
           shows_attributes: [
             {
-              incorrect_field: "01-08-2021 03:06:14 AM"
+              incorrect_field: '01-08-2021 03:06:14 AM'
             },
             {
-              incorrect_field: "02-08-2021 03:06:14 AM"
+              incorrect_field: '02-08-2021 03:06:14 AM'
             },
             {
-              show_time: "01-08-2021 03:06:14 AM"
+              show_time: '01-08-2021 03:06:14 AM'
             }
           ]
         }
@@ -140,7 +139,7 @@ describe Api::V1::MoviesController, type: :request do
     end
 
     it 'silently skip incorrect field and adds correct field' do
-      expect(json).to include("id" => movie.id)
+      expect(json).to include('id' => movie.id)
       expect(movie.shows.count).to be(1)
     end
   end

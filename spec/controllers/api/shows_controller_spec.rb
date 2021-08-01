@@ -3,9 +3,8 @@
 require 'rails_helper'
 
 describe Api::V1::ShowsController, type: :request do
-
-  let (:user) { create_user }
-  let (:movie) { create_movie }
+  let(:user) { create_user }
+  let(:movie) { create_movie }
 
   context 'When fetching movie shows' do
     before do

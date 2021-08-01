@@ -1,7 +1,6 @@
 # app/controllers/api/v1/reviews_controller.rb
 
 class Api::V1::ReviewsController < Api::V1::BaseController
-
   include Swagger::Blocks
 
   before_action :set_movie, only: %w[create]
@@ -10,10 +9,10 @@ class Api::V1::ReviewsController < Api::V1::BaseController
     review = @movie.reviews.build(review_params)
     review.user = current_user
 
-    unless review.save!
-      raise ActiveRecord::RecordInvalid, review
-    else
+    if review.save!
       render_response(review, ReviewBlueprint)
+    else
+      raise ActiveRecord::RecordInvalid, review
     end
   end
 
@@ -93,5 +92,4 @@ class Api::V1::ReviewsController < Api::V1::BaseController
   def review_params
     params.require(:review).permit(:rating)
   end
-
 end

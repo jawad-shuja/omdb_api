@@ -25,7 +25,7 @@ class MovieBlueprint < Blueprinter::Base
   field :Production, name: :production
   field :Website, name: :website
 
-  association :shows, blueprint: ShowBlueprint do |user, options|
+  association :shows, blueprint: ShowBlueprint do |user, _options|
     user.shows.upcoming
   end
 

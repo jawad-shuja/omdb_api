@@ -3,10 +3,9 @@
 require 'rails_helper'
 
 describe RegistrationsController, type: :request do
-
-  let (:user) { build_user }
-  let (:existing_user) { create_user }
-  let (:signup_url) { '/api/signup' }
+  let(:user) { build_user }
+  let(:existing_user) { create_user }
+  let(:signup_url) { '/api/signup' }
 
   context 'When creating a new user' do
     before do
@@ -27,7 +26,7 @@ describe RegistrationsController, type: :request do
     end
 
     it 'returns the user email' do
-      expect(json).to include("email" => user.email)
+      expect(json).to include('email' => user.email)
     end
   end
 
@@ -46,10 +45,9 @@ describe RegistrationsController, type: :request do
     end
 
     it 'returns the error message' do
-      expect(json).to include("messages" => [
-        "Email has already been taken"
-      ])
+      expect(json).to include('messages' => [
+                                'Email has already been taken'
+                              ])
     end
   end
-
 end

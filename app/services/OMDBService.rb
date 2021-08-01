@@ -1,10 +1,9 @@
 class OMDBService
-
   include HTTParty
   base_uri 'www.omdbapi.com'
 
-  def initialize(id, last_modified_at=nil)
-    headers = Hash.new
+  def initialize(id, last_modified_at = nil)
+    headers = {}
     headers['If-Modified-Since'] = last_modified_at.httpdate if last_modified_at.present?
 
     @options = {
@@ -17,7 +16,6 @@ class OMDBService
   end
 
   def fetch
-    self.class.get("", @options)
+    self.class.get('', @options)
   end
-
 end

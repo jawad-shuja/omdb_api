@@ -4,7 +4,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '3.0.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
-gem 'dotenv-rails', groups: [:development, :test]
+gem 'dotenv-rails', groups: %i[development test]
 gem 'rails', '~> 6.1.4'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 1.1'
@@ -28,7 +28,7 @@ gem 'bootsnap', '>= 1.4.4', require: false
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'byebug', platforms: %i[mri mingw x64_mingw]
 end
 
 group :development do
@@ -38,21 +38,23 @@ group :development do
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
+gem 'blueprinter'
 gem 'devise'
 gem 'devise-jwt', '~> 0.8.1'
-gem 'rack-cors'
-gem 'blueprinter'
-gem 'httparty'
-gem 'redis'
 gem 'hiredis'
-gem "pundit"
+gem 'httparty'
+gem 'pundit'
+gem 'rack-cors'
+gem 'redis'
 gem 'swagger-blocks'
 
 group :test do
-  gem 'rspec-rails'
   gem 'factory_bot_rails'
   gem 'faker'
+  gem 'rspec-rails'
   gem 'webmock'
 end
+
+gem 'rubocop', '~> 1.18', require: false

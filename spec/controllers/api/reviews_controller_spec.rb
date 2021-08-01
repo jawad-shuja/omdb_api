@@ -3,9 +3,8 @@
 require 'rails_helper'
 
 describe Api::V1::ReviewsController, type: :request do
-
-  let (:user) { create_user }
-  let (:movie) { create_movie }
+  let(:user) { create_user }
+  let(:movie) { create_movie }
 
   context 'When creating review' do
     before do
@@ -46,5 +45,4 @@ describe Api::V1::ReviewsController, type: :request do
       expect(response.status).to eq(422)
     end
   end
-
 end

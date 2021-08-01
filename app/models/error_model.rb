@@ -1,8 +1,9 @@
-class ErrorModel  # Notice, this is just a plain ruby object.
+# Notice, this is just a plain ruby object.
+class ErrorModel
   include Swagger::Blocks
 
   swagger_schema :ErrorModel do
-    key :required, [:status, :messages]
+    key :required, %i[status messages]
     property :staus do
       key :type, :string
     end
