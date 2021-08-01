@@ -5,6 +5,7 @@ class Api::BaseController < ApplicationController
 
   rescue_from ActiveRecord::RecordNotFound, with: :not_found
   rescue_from ActiveRecord::RecordInvalid, with: :not_valid
+  rescue_from Pundit::NotAuthorizedError, with: :not_authorised
 
   private
 
@@ -24,6 +25,15 @@ class Api::BaseController < ApplicationController
         error&.message || 'Not valid'
       ]
     }, status: 422
+  end
+
+  def not_authorised
+    render json: {
+      status: 'failed',
+      messages: [
+        'Not authorised'
+      ]
+    }, status: 401
   end
 
 end

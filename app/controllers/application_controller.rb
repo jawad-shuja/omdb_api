@@ -2,6 +2,8 @@
 
 class ApplicationController < ActionController::API
 
+  include Pundit
+
   def render_collection(collection, blueprint)
     render json: blueprint.render_as_json(collection)
   end

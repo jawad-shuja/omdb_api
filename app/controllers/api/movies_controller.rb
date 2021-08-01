@@ -16,6 +16,7 @@ class Api::MoviesController < Api::BaseController
   end
 
   def update
+    authorize @movie
     unless @movie.update(movie_params)
       raise ActiveRecord::RecordInvalid, @movie
     else

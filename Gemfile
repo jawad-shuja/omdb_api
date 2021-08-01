@@ -46,6 +46,7 @@ gem 'blueprinter'
 gem 'httparty'
 gem 'redis'
 gem 'hiredis'
+gem "pundit"
 
 group :test do
   gem 'rspec-rails'
