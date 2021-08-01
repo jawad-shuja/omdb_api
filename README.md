@@ -41,7 +41,7 @@
   * Copy `.env.template` in the root of the project to `.env` in the same directory. Update the following environment variable before running the project:
     * `RAILS_MASTER_KEY` (For this test project, you may use `40eef142066a6148a18265e335080435` in order to work with the committed credentials. This is only shared because this is a test project without any sensitive data.)
     * `REDIS_URL` (Use your local redis url like redis://localhost:6379/0/cache)
-    * `OMDB_API_KEY` (Use you OMDB API key)
+    * `OMDB_API_KEY` (Use your OMDB API key)
 
 * Set up credentials
   * If the above master key is not used, the credentials file can be deleted and created again using:
