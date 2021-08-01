@@ -21,4 +21,22 @@ module UserHelpers
     )
   end
 
+  def create_admin
+    FactoryBot.create(
+      :user,
+      email: Faker::Internet.email,
+      password: Faker::Internet.password,
+      role: User::roles[:admin]
+    )
+  end
+
+  def build_admin
+    FactoryBot.build(
+      :user,
+      email: Faker::Internet.email,
+      password: Faker::Internet.password,
+      role: User::roles[:admin]
+    )
+  end
+
 end

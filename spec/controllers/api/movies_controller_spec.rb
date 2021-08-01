@@ -5,6 +5,7 @@ require 'rails_helper'
 describe Api::MoviesController, type: :request do
 
   let (:user) { create_user }
+  let (:admin) { create_admin }
   let! (:movie) { create_movie }
 
   context 'When fetching a movie' do
@@ -65,9 +66,30 @@ describe Api::MoviesController, type: :request do
     end
   end
 
-  context 'When updating movie shows' do
+  context 'When updating movie shows as customer' do
     before do
       login_with_api(user)
+      patch "/api/movies/#{movie.id}", headers: {
+        'Authorization': response.headers['Authorization']
+      }, params: {
+        movie: {
+          shows_attributes: [
+            {
+              show_time: "01-08-2021 03:06:14 AM"
+            }
+          ]
+        }
+      }
+    end
+
+    it 'returns 401' do
+      expect(response.status).to eq(401 )
+    end
+  end
+
+  context 'When updating movie shows as admin' do
+    before do
+      login_with_api(admin)
       patch "/api/movies/#{movie.id}", headers: {
         'Authorization': response.headers['Authorization']
       }, params: {
@@ -91,9 +113,9 @@ describe Api::MoviesController, type: :request do
     end
   end
 
-  context 'When updating movie shows with some missing data' do
+  context 'When updating movie shows as admin with some missing data' do
     before do
-      login_with_api(user)
+      login_with_api(admin)
       patch "/api/movies/#{movie.id}", headers: {
         'Authorization': response.headers['Authorization']
       }, params: {
