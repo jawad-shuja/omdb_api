@@ -1,5 +1,5 @@
-# app/controllers/api/base_controller.rb
-class Api::BaseController < ApplicationController
+# app/controllers/api/v1/base_controller.rb
+class Api::V1::BaseController < ApplicationController
 
   before_action :authenticate_user!
 

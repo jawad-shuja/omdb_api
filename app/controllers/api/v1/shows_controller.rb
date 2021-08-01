@@ -1,6 +1,6 @@
-# app/controllers/api/shows_controller.rb
+# app/controllers/api/v1/shows_controller.rb
 
-class Api::ShowsController < Api::BaseController
+class Api::V1::ShowsController < Api::V1::BaseController
 
   before_action :set_movie, only: %w[index]
 

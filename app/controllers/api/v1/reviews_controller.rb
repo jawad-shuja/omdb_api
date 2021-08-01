@@ -1,6 +1,6 @@
-# app/controllers/api/reviews_controller.rb
+# app/controllers/api/v1/reviews_controller.rb
 
-class Api::ReviewsController < Api::BaseController
+class Api::V1::ReviewsController < Api::V1::BaseController
 
   before_action :set_movie, only: %w[create]
 

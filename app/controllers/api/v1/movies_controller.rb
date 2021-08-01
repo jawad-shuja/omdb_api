@@ -1,6 +1,6 @@
-# app/controllers/api/movies_controller.rb
+# app/controllers/api/v1/movies_controller.rb
 
-class Api::MoviesController < Api::BaseController
+class Api::V1::MoviesController < Api::V1::BaseController
 
   before_action :set_movie, only: %w[show update show_times]
 
