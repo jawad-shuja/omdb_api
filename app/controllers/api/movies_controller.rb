@@ -33,4 +33,5 @@ class Api::MoviesController < Api::BaseController
   def movie_params
     params.require(:movie).permit(:price, shows_attributes: [:id, :show_time, :_destroy])
   end
+
 end

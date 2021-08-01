@@ -3,6 +3,7 @@ class Movie < ApplicationRecord
 
   has_one :movie_datum
   has_many :shows
+  has_many :reviews
 
   accepts_nested_attributes_for :shows, allow_destroy: true, reject_if: Proc.new { |attributes| attributes['show_time'].blank? }
 

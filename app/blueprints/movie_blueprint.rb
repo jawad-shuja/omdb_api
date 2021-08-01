@@ -29,4 +29,6 @@ class MovieBlueprint < Blueprinter::Base
   association :shows, blueprint: ShowBlueprint do |user, options|
     user.shows.upcoming
   end
+
+  association :reviews, blueprint: ReviewBlueprint
 end

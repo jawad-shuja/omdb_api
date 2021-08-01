@@ -17,11 +17,11 @@ class Api::BaseController < ApplicationController
     }, status: 404
   end
 
-  def not_valid(resource)
+  def not_valid(error)
     render json: {
       status: 'failed',
       messages: [
-        resource.errors&.full_messages || 'Not valid'
+        error&.message || 'Not valid'
       ]
     }, status: 422
   end
