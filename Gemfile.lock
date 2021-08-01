@@ -197,6 +197,7 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
+    swagger-blocks (3.0.0)
     thor (1.1.0)
     tzinfo (2.0.4)
       concurrent-ruby (~> 1.0)
@@ -234,6 +235,7 @@ DEPENDENCIES
   redis
   rspec-rails
   spring
+  swagger-blocks
   tzinfo-data
 
 RUBY VERSION

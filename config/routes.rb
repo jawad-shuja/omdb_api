@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :apidocs, only: [:index]
   namespace :api, defaults: { format: :json } do
     scope module: :v1 do
       resources :movies, only: %w[show index update] do

@@ -47,6 +47,7 @@ gem 'httparty'
 gem 'redis'
 gem 'hiredis'
 gem "pundit"
+gem 'swagger-blocks'
 
 group :test do
   gem 'rspec-rails'
