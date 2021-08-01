@@ -95,3 +95,5 @@
   * More thought can go int Redis cache expirations.
   * A Swagger UI engine can be bundled with the app. I did not spend much time on this because I was working with an api only Rails app. Please use https://editor.swagger.io/ to explore the Swagger json generated at the /apidocs url.
   * The JWT revocation strategy can be thought about more as well. I added some logic while following the library instructions but the need for this varies from use case to use case. Most apps I've worked on before tend to keep the user logged in via a refresh token.
+  * Rubocop can be further configure for better suggestions.
+  * If the API is extended to expose movie creation endpoint, we can add validation to avoid duplication of movies.

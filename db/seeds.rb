@@ -4,5 +4,8 @@
 #
 # Examples:
 #
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+
+omdb_ids = %w[tt0232500 tt0322259 tt0463985 tt1013752 tt1596343 tt1905041 tt2820852 tt4630562]
+omdb_ids.each do |movie_id|
+  Movie.create!(omdb_reference: movie_id)
+end
