@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-describe Api::ShowsController, type: :request do
+describe Api::V1::ShowsController, type: :request do
 
   let (:user) { create_user }
   let (:movie) { create_movie }
