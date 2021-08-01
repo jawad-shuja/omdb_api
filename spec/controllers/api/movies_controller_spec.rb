@@ -65,4 +65,61 @@ describe Api::MoviesController, type: :request do
     end
   end
 
+  context 'When updating movie shows' do
+    before do
+      login_with_api(user)
+      patch "/api/movies/#{movie.id}", headers: {
+        'Authorization': response.headers['Authorization']
+      }, params: {
+        movie: {
+          shows_attributes: [
+            {
+              show_time: "01-08-2021 03:06:14 AM"
+            }
+          ]
+        }
+      }
+    end
+
+    it 'returns 200' do
+      expect(response.status).to eq(200)
+    end
+
+    it 'return movie with show time' do
+      expect(json).to include("id" => movie.id)
+      expect(movie.shows.count).to be(1)
+    end
+  end
+
+  context 'When updating movie shows with some missing data' do
+    before do
+      login_with_api(user)
+      patch "/api/movies/#{movie.id}", headers: {
+        'Authorization': response.headers['Authorization']
+      }, params: {
+        movie: {
+          shows_attributes: [
+            {
+              incorrect_field: "01-08-2021 03:06:14 AM"
+            },
+            {
+              incorrect_field: "02-08-2021 03:06:14 AM"
+            },
+            {
+              show_time: "01-08-2021 03:06:14 AM"
+            }
+          ]
+        }
+      }
+    end
+
+    it 'returns 200' do
+      expect(response.status).to eq(200)
+    end
+
+    it 'silently skip incorrect field and adds correct field' do
+      expect(json).to include("id" => movie.id)
+      expect(movie.shows.count).to be(1)
+    end
+  end
 end

@@ -25,4 +25,8 @@ class MovieBlueprint < Blueprinter::Base
   field :BoxOffice, name: :boxOffice
   field :Production, name: :production
   field :Website, name: :website
+
+  association :shows, blueprint: ShowBlueprint do |user, options|
+    user.shows.upcoming
+  end
 end

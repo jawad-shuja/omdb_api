@@ -2,6 +2,9 @@ class Movie < ApplicationRecord
   attr_accessor *%i[Title Year Rated Released Runtime Genre Director Writer Actors Plot Language Country Awards Poster Ratings Metascore imdbRating imdbVotes imdbID Type DVD BoxOffice Production Website]
 
   has_one :movie_datum
+  has_many :shows
+
+  accepts_nested_attributes_for :shows, allow_destroy: true, reject_if: Proc.new { |attributes| attributes['show_time'].blank? }
 
   def fetch_details_from_omdb
     omdb = OMDBService.new(self.omdb_reference, self.movie_datum&.last_modified_at)

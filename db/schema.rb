@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_31_234854) do
+ActiveRecord::Schema.define(version: 2021_08_01_025231) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -37,6 +37,14 @@ ActiveRecord::Schema.define(version: 2021_07_31_234854) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "shows", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.datetime "show_time"
+    t.uuid "movie_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["movie_id"], name: "index_shows_on_movie_id"
+  end
+
   create_table "users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -46,4 +54,5 @@ ActiveRecord::Schema.define(version: 2021_07_31_234854) do
   end
 
   add_foreign_key "movie_data", "movies"
+  add_foreign_key "shows", "movies"
 end
