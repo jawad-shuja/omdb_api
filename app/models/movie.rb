@@ -5,6 +5,8 @@ class Movie < ApplicationRecord
   has_many :shows
   has_many :reviews
 
+  validates :price, numericality: { greater_than: 0 }
+
   accepts_nested_attributes_for :shows, allow_destroy: true, reject_if: Proc.new { |attributes| attributes['show_time'].blank? }
 
   def fetch_details_from_omdb

@@ -1,6 +1,8 @@
 class MovieBlueprint < Blueprinter::Base
   identifier :id
 
+  fields :price, :imdbRating, :imdbVotes, :imdbID
+
   field :Title, name: :title
   field :Year, name: :year
   field :Rated, name: :rated
@@ -17,9 +19,6 @@ class MovieBlueprint < Blueprinter::Base
   field :Poster, name: :poster
   field :Ratings, name: :ratings
   field :Metascore, name: :metascore
-  field :imdbRating
-  field :imdbVotes
-  field :imdbID
   field :Type, name: :type
   field :DVD, name: :dvd
   field :BoxOffice, name: :boxOffice
