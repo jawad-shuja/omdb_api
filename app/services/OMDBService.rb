@@ -9,7 +9,7 @@ class OMDBService
 
     @options = {
       query: {
-        apikey: Rails.application.credentials[:omdb_api_key],
+        apikey: ENV['OMDB_API_KEY'],
         i: id
       },
       headers: headers

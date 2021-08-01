@@ -136,7 +136,7 @@ RSpec.configure do |config|
       Website: "http://www.thefastandthefurious.com",
       Response: "True"
     }
-    stub_request(:get, "http://www.omdbapi.com/?apikey=#{Rails.application.credentials[:omdb_api_key]}&i=tt0232500").
+    stub_request(:get, "http://www.omdbapi.com/?apikey=#{ENV['OMDB_API_KEY']}&i=tt0232500").
       with(
         headers: {
         'Accept'=>'*/*',
