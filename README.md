@@ -5,10 +5,12 @@
 
 ## Notes and assumptions
 * This project has multi-line commit message mostly with the following format: "Module: Brief description. \n WHAT: Details description. \n WHY: Reason for commit."
+* This project assumes two user roles, admin and customer. Only admin users are allowed to update moview shows and price.
+* An admin user will be created automatically when you run the seeds file. The email is `test@example.com` and the password is `Password!1`. This user can be used to access all the functionality in the system. Customer users can be created via the `/api/signup` endpoint.
+* This project authenticates users via JWT tokens.
+* The `/api/login` endpoint return the `Authorization` header in the response. This can be sent along in the subsequent request headers. Without a valid header, the APIs will respond with `401`.
 * This project pre-populates limited omdb movie ids in the database and fetches up to date details for these movies. Movie creation endpoint is not exposed.
 * This project assumes that each movie will have shows, and each show will have a show_time (datetime). When we fetch shows for a movie at `/movies/:movie_id/shows` url, only the upcoming shows are fetched. This response is part for both, the movie serialiser and the show serialise.
-* This project assumes two user roles, admin and customer. Only admin users are allowed to update moview shows and price.
-* This project authenticates users via JWT tokens.
 * This project exposes a public endpoint for the Swagger JSON document at localhost:3000/apidocs and assumes that this will be used with an external swagger UI engine. Response from `/apidocs` can also be copied to https://editor.swagger.io/ to see the documentation.
 * This project only fetches new details from the omdb endpoint if the `last-modified` timestamp on the remote server has changed since the last fetch. Otherwise, the details are read from local storage.
 * This project uses PostgreSQL database to persist data.
