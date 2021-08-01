@@ -61,7 +61,7 @@ describe Api::MoviesController, type: :request do
 
     it 'returns one of the movie' do
       expect(json).to be_an_instance_of(Array)
-      expect(json).to include({ 'id' => movie.id, 'omdb_reference' => movie.omdb_reference })
+      expect(json.any? { |movie| movie['title'] == "2 Fast 2 Furious" }).to be true
     end
   end
 

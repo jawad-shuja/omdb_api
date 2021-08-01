@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_31_223410) do
+ActiveRecord::Schema.define(version: 2021_07_31_234854) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -20,6 +20,15 @@ ActiveRecord::Schema.define(version: 2021_07_31_223410) do
     t.string "jti", null: false
     t.datetime "expired_at", null: false
     t.index ["jti"], name: "index_jwt_denylist_on_jti"
+  end
+
+  create_table "movie_data", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.json "ombd_meta"
+    t.datetime "last_modified_at"
+    t.uuid "movie_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["movie_id"], name: "index_movie_data_on_movie_id"
   end
 
   create_table "movies", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -36,4 +45,5 @@ ActiveRecord::Schema.define(version: 2021_07_31_223410) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  add_foreign_key "movie_data", "movies"
 end

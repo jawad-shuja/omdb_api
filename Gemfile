@@ -43,6 +43,9 @@ gem 'devise'
 gem 'devise-jwt', '~> 0.8.1'
 gem 'rack-cors'
 gem 'blueprinter'
+gem 'httparty'
+gem 'redis'
+gem 'hiredis'
 
 group :test do
   gem 'rspec-rails'
